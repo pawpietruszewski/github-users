@@ -2,7 +2,6 @@ import Link from 'next/link';
 
 import {
   Container,
-  Logo,
   Title,
 } from './elements';
 
@@ -14,11 +13,6 @@ const Header = ({ title }: HeaderProps) => {
   
   return (
     <Container>
-      <Link href="/" passHref>
-        <Logo>
-          logo
-        </Logo>
-      </Link>
       <Title>{ title }</Title>
     </Container>
   );
