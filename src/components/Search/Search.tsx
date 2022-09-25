@@ -2,7 +2,7 @@ import {
   FormEvent,
   useState,
 } from 'react';
-import { useRouter } from "next/router"
+import { useRouter } from 'next/router';
 
 import {
   Container,
@@ -17,13 +17,12 @@ export interface SearchProps {
 const Search = ({
   submit,
 }: SearchProps) => {
-  const { query: routerQuery } = useRouter()
-  const { q } = routerQuery
+  const { query: routerQuery } = useRouter();
+  const { q } = routerQuery;
   const [query, setQuery] = useState(q || '');
 
   const onSubmit = (ev: FormEvent) => {
     ev.preventDefault();
-    const ate = query
     if (!query) {
       return;
     }

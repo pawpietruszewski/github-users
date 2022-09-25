@@ -41,10 +41,10 @@ interface TabpanelProps {
 
 export const AccordionPanel = styled.div`
 height: ${({ currentHeight }: TabpanelProps) => (
-  typeof currentHeight === 'number' && currentHeight > 0
-    ? `${currentHeight}px`
-    : currentHeight
-)};
+    typeof currentHeight === 'number' && currentHeight > 0
+      ? `${currentHeight}px`
+      : currentHeight
+  )};
 overflow: hidden;
 ${({ isOpen }: TabpanelProps) => (isOpen ? `
   transition: height 0.2s ${styles.easings.easeOutQuad} 0s, visibility 0s 0s;

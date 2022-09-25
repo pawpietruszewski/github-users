@@ -1,7 +1,8 @@
+import { NextPage } from 'next';
 import Layout from 'src/components/Layout';
 import HomePage from 'src/components/HomePage';
 
-export const Page = (): JSX.Element => {
+export const Page: NextPage = (): JSX.Element => {
   return (
     <Layout >
       <HomePage />
@@ -10,4 +11,3 @@ export const Page = (): JSX.Element => {
 };
 
 export default Page;
-

@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, ReactNode, SyntheticEvent } from 'react';
+import { useState, useRef, ReactNode } from 'react';
 
 import {
   AccordionWrapper,
@@ -17,8 +17,7 @@ const Accordion = ({ title, children }: AccordionProps) => {
   const refContent = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number | string>(0);
 
-  const onClick = (ev: SyntheticEvent<HTMLButtonElement>) => {
-    ev.preventDefault;
+  const onClick = () => {
     clearTimeout(refTimeout.current);
     if (refContent.current) {
       setHeight(refContent.current.offsetHeight);
@@ -27,7 +26,7 @@ const Accordion = ({ title, children }: AccordionProps) => {
         isOpen ? 0 : 200,
       );
     }
-    setOpen(!isOpen)
+    setOpen(!isOpen);
   };
   
   return (
