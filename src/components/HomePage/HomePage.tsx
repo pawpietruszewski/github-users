@@ -2,6 +2,10 @@ import { useRouter } from 'next/router';
 import Search from 'src/components/Search';
 import SearchResults from 'src/components/SearchResults';
 
+import {
+  Container,
+} from './elements';
+
 export const HomePage = (): JSX.Element => {
   const router = useRouter();
 
@@ -10,10 +14,10 @@ export const HomePage = (): JSX.Element => {
   };
 
   return (
-    <>
+    <Container>
       <Search submit={onSubmit} />
       <SearchResults />
-    </>
+    </Container>
   );
 };
 
