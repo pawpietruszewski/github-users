@@ -5,7 +5,6 @@ export const AccordionWrapper = styled.div`
   margin-bottom: 20px;
 `;
 
-
 export const AccordionTitle = styled.button`
   background-color: ${styles.colors.gray};
   box-sizing: border-box;
@@ -53,4 +52,31 @@ ${({ isOpen }: TabpanelProps) => (isOpen ? `
   transition: height 0.2s ${styles.easings.easeOutQuad} 0s, visibility 0s 0.2s;
   visibility: hidden;
 `)};
+`;
+
+export const Loader = styled.span`
+  display: inline-block;
+  height: 14px;
+  margin: 0 10px;
+  width: 14px;
+
+  &::after {
+    animation: lds-dual-ring 1.2s linear infinite;
+    border: 1px solid ${styles.colors.black};
+    border-color: ${styles.colors.black} transparent ${styles.colors.black} transparent;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 10px;
+    margin: 3px;
+    width: 10px;
+  }
+  @keyframes lds-dual-ring {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 `;

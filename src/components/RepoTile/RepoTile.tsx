@@ -7,25 +7,25 @@ import {
 } from './elements';
 
 export interface RepoTileProps {
-  description: string;
+  description?: string;
   stars?: number;
   title: string;
 }
 
-const RepoTile = ({ title, description, stars }: RepoTileProps) => (
+const RepoTile = ({ title, description, stars = 0 }: RepoTileProps) => (
   <Wrapper>
     <Inside>
       <Title>
         {title}
       </Title>
-      <Description>
-        {description}
-      </Description>
-      {stars && (
-        <Stars>
-          {stars}<span>★</span>
-        </Stars>
+      {description && (
+        <Description>
+          {description}
+        </Description>
       )}
+      <Stars>
+        {stars}<span>★</span>
+      </Stars>
     </Inside>
   </Wrapper>
 );

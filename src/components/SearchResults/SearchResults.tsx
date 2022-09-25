@@ -8,7 +8,6 @@ import {
 } from './elements';
 
 import Accordion from 'src/components/Accordion';
-import RepoTile from 'src/components/RepoTile';
 import { useUsers } from 'src/hooks/useUsers';
 
 const Search = () => {
@@ -24,13 +23,7 @@ const Search = () => {
       ) : (
       <Results>
       {data?.items.map((item) => (
-        <Accordion title={item.login} key={item.node_id}>
-          <RepoTile
-            title="Repo title"
-            description="Repo description"
-            stars={21}
-          />  
-        </Accordion>
+        <Accordion title={item.login} key={item.node_id} reposUrl={item.repos_url} />
       ))}
       </Results>
       )}

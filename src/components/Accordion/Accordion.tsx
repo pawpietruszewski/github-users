@@ -1,23 +1,28 @@
-import { useState, useRef, ReactNode } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { useRepos } from 'src/hooks/useRepos';
+import RepoTile from 'src/components/RepoTile';
 
 import {
-  AccordionWrapper,
-  AccordionTitle,
   AccordionPanel,
+  AccordionTitle,
+  AccordionWrapper,
+  Loader,
 } from './elements';
 
 export interface AccordionProps {
-  children: ReactNode;
+  reposUrl: string;
   title: string;
 }
 
-const Accordion = ({ title, children }: AccordionProps) => {
+const Accordion = ({ reposUrl, title }: AccordionProps) => {
   const [isOpen, setOpen] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const refTimeout = useRef<number>();
   const refContent = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number | string>(0);
+  const { data, isLoading } = useRepos(clicked ? reposUrl : null );
 
-  const onClick = () => {
+  const toggleAccordion = () => {
     clearTimeout(refTimeout.current);
     if (refContent.current) {
       setHeight(refContent.current.offsetHeight);
@@ -28,7 +33,21 @@ const Accordion = ({ title, children }: AccordionProps) => {
     }
     setOpen(!isOpen);
   };
-  
+
+  useEffect(() => {
+    if (!isLoading && data) {
+      toggleAccordion();
+    }
+  }, [isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const onClick = () => {
+    setClicked(true);
+    if (!data) {
+      return;
+    }
+    toggleAccordion();
+  };
+
   return (
     <AccordionWrapper>
       <AccordionTitle
@@ -36,13 +55,27 @@ const Accordion = ({ title, children }: AccordionProps) => {
         onClick={onClick}
       >
         {title}
+        {clicked && isLoading && (
+          <Loader />
+        )}
       </AccordionTitle>
       <AccordionPanel
         currentHeight={height}
         isOpen={isOpen}
       >
         <div ref={refContent}>
-          {children}
+          {data && (
+            <>
+              {data?.map((item) => (
+                <RepoTile
+                  key={item.id}
+                  title={item.name}
+                  description={item.description}
+                  stars={item.stargazers_count}
+                />
+              ))}
+            </>
+          )} 
         </div>
       </AccordionPanel>
     </AccordionWrapper>
