@@ -7,6 +7,7 @@ import {
   AccordionTitle,
   AccordionWrapper,
   Loader,
+  NoRepo,
 } from './elements';
 
 export interface AccordionProps {
@@ -64,7 +65,7 @@ const Accordion = ({ reposUrl, title }: AccordionProps) => {
         isOpen={isOpen}
       >
         <div ref={refContent}>
-          {data && (
+          {data && !!data.length && (
             <>
               {data?.map((item) => (
                 <RepoTile
@@ -75,6 +76,11 @@ const Accordion = ({ reposUrl, title }: AccordionProps) => {
                 />
               ))}
             </>
+          )}
+          {data && !data.length && (
+            <NoRepo>
+              Repositories not found
+            </NoRepo>
           )} 
         </div>
       </AccordionPanel>

@@ -80,3 +80,13 @@ export const Loader = styled.span`
     }
   }
 `;
+
+export const NoRepo = styled.div`
+  background: ${styles.colors.darkGray};
+  box-sizing: border-box;
+  font-size: 1rem;
+  margin-top: 7px;
+  margin: 7px 0 0 20px;
+  padding: 10px 5px;
+  width: 100%;
+`;
