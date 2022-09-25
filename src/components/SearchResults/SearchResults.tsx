@@ -17,17 +17,18 @@ const Search = () => {
 
   return (
     <Container>
-      <Title>Showing users for &rdquo;{ q }&rdquo;</Title>
+      {data && (
+        <Title>Showing users for &rdquo;{ q }&rdquo;</Title>
+      )}
       {isLoading ? (
         <Loading>loading...</Loading>
       ) : (
       <Results>
-      {data?.items.map((item) => (
-        <Accordion title={item.login} key={item.node_id} reposUrl={item.repos_url} />
-      ))}
+        {data?.items.map((item) => (
+          <Accordion title={item.login} key={item.node_id} reposUrl={item.repos_url} />
+        ))}
       </Results>
       )}
-      
     </Container>
   );
 };
