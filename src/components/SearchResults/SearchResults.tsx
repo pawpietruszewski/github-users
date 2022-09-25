@@ -2,9 +2,10 @@ import { useRouter } from 'next/router';
 
 import {
   Container,
-  Title,
-  Results,
+  Loader,
   Loading,
+  Results,
+  Title,
 } from './elements';
 
 import Accordion from 'src/components/Accordion';
@@ -20,8 +21,8 @@ const Search = () => {
       {data && (
         <Title>Showing users for &rdquo;{ q }&rdquo;</Title>
       )}
-      {isLoading ? (
-        <Loading>loading...</Loading>
+      {q && isLoading ? (
+        <Loading>loading<Loader/></Loading>
       ) : (
       <Results>
         {data?.items.map((item) => (
