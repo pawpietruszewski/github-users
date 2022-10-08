@@ -10,6 +10,8 @@ import {
   Submit,
 } from './elements';
 
+import { useSearchHistory } from 'src/contexts/searchHistoryContext';
+
 export interface SearchProps {
   submit: ({ query }: { query: string }) => void;
 }
@@ -20,6 +22,7 @@ const Search = ({
   const { query: routerQuery } = useRouter();
   const { q } = routerQuery;
   const [query, setQuery] = useState(q || '');
+  const { addNewHistoryElement } = useSearchHistory();
 
   const onSubmit = (ev: FormEvent) => {
     ev.preventDefault();
@@ -28,6 +31,7 @@ const Search = ({
     }
 
     submit({ query: query as string });
+    addNewHistoryElement(query as string);
   };
 
   const onChange = (ev: React.FormEvent<HTMLInputElement>) => {

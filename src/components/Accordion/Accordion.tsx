@@ -39,7 +39,7 @@ const Accordion = ({ reposUrl, title }: AccordionProps) => {
     if (!isLoading && data) {
       toggleAccordion();
     }
-  }, [isLoading]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [isLoading, data]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const onClick = () => {
     setClicked(true);

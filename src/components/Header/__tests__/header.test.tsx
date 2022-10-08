@@ -5,5 +5,7 @@ describe('Header', () => {
   test('renders', () => {
     render(<Header title="test"/>);
     screen.getByText('test');
+    screen.getByText('Search');
+    screen.getByText('Show Search History');
   });
 });

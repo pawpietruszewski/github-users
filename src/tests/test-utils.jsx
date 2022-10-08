@@ -1,11 +1,12 @@
 /* eslint-disable no-restricted-imports */
 // test-utils.js
 import { render } from '@testing-library/react';
+import { SearchHistoryProvider } from 'src/contexts/searchHistoryContext';
 
 // Add in any providers here if necessary:
 // (ReduxProvider, ThemeProvider, etc)
 const Providers = ({ children }) => {
-  return children;
+  return <SearchHistoryProvider>{children}</SearchHistoryProvider>;
 };
 
 const customRender = (ui, options = {}) =>
