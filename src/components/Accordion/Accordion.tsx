@@ -16,8 +16,8 @@ export interface AccordionProps {
 }
 
 const Accordion = ({ reposUrl, title }: AccordionProps) => {
-  const [isOpen, setOpen] = useState(false);
-  const [clicked, setClicked] = useState(false);
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [clicked, setClicked] = useState<boolean>(false);
   const refTimeout = useRef<number>();
   const refContent = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState<number | string>(0);
@@ -66,16 +66,14 @@ const Accordion = ({ reposUrl, title }: AccordionProps) => {
       >
         <div ref={refContent}>
           {data && !!data.length && (
-            <>
-              {data?.map((item) => (
+            data?.map((item) => (
                 <RepoTile
                   key={item.id}
                   title={item.name}
                   description={item.description}
                   stars={item.stargazers_count}
                 />
-              ))}
-            </>
+            ))
           )}
           {data && !data.length && (
             <NoRepo>
