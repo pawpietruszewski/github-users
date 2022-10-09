@@ -46,10 +46,7 @@ const Search = ({
         onSubmit={onSubmit}
       >
         <Input
-          aria-autocomplete="list"
-          aria-controls="search-users-results"
           aria-label="Search Query"
-          aria-owns="search-users-results"
           autoCapitalize="off"
           autoComplete="off"
           autoCorrect="off"
